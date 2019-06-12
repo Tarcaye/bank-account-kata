@@ -19,14 +19,25 @@ public class SaveMoneyTest {
         save(accountId, money);
 
         // Assert
-        Assertions.assertThat(balance(accountId)).isEqualTo(money);
+        Assertions.assertThat(balance(accountId).getValue()).isEqualTo(money);
     }
 
-    private int balance(String accountId) {
-        return 12000;
+    private Balance balance(String accountId) {
+        return new Balance(12000);
     }
 
     private void save(String account, int money) {
     }
 
+    public class Balance {
+        private final int value;
+
+        public Balance(int value) {
+            this.value = value;
+        }
+
+        public int getValue() {
+            return value;
+        }
+    }
 }
