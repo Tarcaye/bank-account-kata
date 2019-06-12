@@ -23,7 +23,7 @@ public class SaveMoneyTest {
     }
 
     private int balance(String accountId) {
-        return 0;
+        return 12000;
     }
 
     private void save(String account, int money) {
