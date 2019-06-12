@@ -1,55 +1,28 @@
 package com.thomas.carpaye.bankaccountkata.application;
 
-import com.thomas.carpaye.bankaccountkata.application.SaveMoney;
-import org.assertj.core.api.Assertions;
+import com.thomas.carpaye.bankaccountkata.domain.model.DepositRepository;
 import org.junit.Test;
+import org.mockito.Mockito;
+
+import static org.mockito.ArgumentMatchers.any;
 
 public class SaveMoneyTest {
 
-//    In order to save money
-//    As a bank client
-//    I want to make a deposit in my account
+    private DepositRepository depositRepository = Mockito.mock(DepositRepository.class);
+    private SaveMoney saveMoney = new SaveMoney(depositRepository);
 
     @Test
-    public void must_save_money_on_bank_account_for_bank_client_when_deposit_money() {
+    public void must_save_money_deposit(){
         // Arrange
+        int money = 10;
         String accountId = "1234567890123";
-        int money = 12000;
 
         // Act
-        SaveMoney.save(accountId, money);
+        saveMoney.save(accountId, money);
+
 
         // Assert
-        Assertions.assertThat(balance(accountId).getValue()).isEqualTo(money);
+        Mockito.verify(depositRepository).add(any());
     }
 
-    @Test
-    public void must_save_money_on_bank_account_for_bank_client_when_deposit_money_multiple_times() {
-        // Arrange
-        String accountId = "1234567890123";
-        int money = 12000;
-
-        // Act
-        SaveMoney.save(accountId, money);
-        SaveMoney.save(accountId, money);
-
-        // Assert
-        Assertions.assertThat(balance(accountId).getValue()).isEqualTo(money*2);
-    }
-
-    private Balance balance(String accountId) {
-        return new Balance(12000);
-    }
-
-    public class Balance {
-        private final int value;
-
-        public Balance(int value) {
-            this.value = value;
-        }
-
-        public int getValue() {
-            return value;
-        }
-    }
 }
