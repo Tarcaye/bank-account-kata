@@ -1,4 +1,4 @@
-package com.thomas.carpaye.bankaccountkata.domain.model;
+package com.thomas.carpaye.bankaccountkata.domain.model.withdrawal;
 
 public class InsufficientFundsException extends RuntimeException {
     public InsufficientFundsException(String message) {

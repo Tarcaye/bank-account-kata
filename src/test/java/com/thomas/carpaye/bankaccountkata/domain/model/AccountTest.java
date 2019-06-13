@@ -1,9 +1,10 @@
 package com.thomas.carpaye.bankaccountkata.domain.model;
 
+import com.thomas.carpaye.bankaccountkata.domain.model.common.Account;
+import com.thomas.carpaye.bankaccountkata.domain.model.common.InvalidAccountException;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.Assert.*;
 
 public class AccountTest {
 
@@ -13,7 +14,7 @@ public class AccountTest {
         String accountId = null;
 
         // Act
-        assertThatThrownBy(()->Account.of(accountId))
+        assertThatThrownBy(()-> Account.of(accountId))
         // Assert
         .isExactlyInstanceOf(InvalidAccountException.class)
         .hasMessage("Invalid accountId : " + accountId);

@@ -1,6 +1,4 @@
-package com.thomas.carpaye.bankaccountkata.domain.model;
-
-import com.sun.javaws.exceptions.InvalidArgumentException;
+package com.thomas.carpaye.bankaccountkata.domain.model.common;
 
 public class InvalidDepositAmountException extends RuntimeException {
 

@@ -1,8 +1,8 @@
 package com.thomas.carpaye.bankaccountkata.infrastructure;
 
-import com.thomas.carpaye.bankaccountkata.domain.model.Account;
-import com.thomas.carpaye.bankaccountkata.domain.model.Amount;
-import com.thomas.carpaye.bankaccountkata.domain.model.OverdraftRepository;
+import com.thomas.carpaye.bankaccountkata.domain.model.common.Account;
+import com.thomas.carpaye.bankaccountkata.domain.model.common.Amount;
+import com.thomas.carpaye.bankaccountkata.domain.model.withdrawal.OverdraftRepository;
 
 public class SimpleOverdraftRepository implements OverdraftRepository {
     @Override

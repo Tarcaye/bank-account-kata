@@ -1,5 +1,7 @@
 package com.thomas.carpaye.bankaccountkata.domain.model;
 
+import com.thomas.carpaye.bankaccountkata.domain.model.common.Amount;
+
 import java.time.LocalDateTime;
 
 public abstract class PastTransaction {
@@ -10,12 +12,6 @@ public abstract class PastTransaction {
     PastTransaction(Amount amount) {
         this.amount = amount;
         this.date = LocalDateTime.now();
-    }
-
-    private static void checkAmount(int amount) {
-        if (amount <= 0) {
-            throw new InvalidDepositAmountException("Invalid amount for deposit : " + amount);
-        }
     }
 
     public Amount getAmount() {

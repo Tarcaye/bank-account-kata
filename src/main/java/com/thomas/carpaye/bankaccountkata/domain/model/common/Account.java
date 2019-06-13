@@ -1,10 +1,10 @@
-package com.thomas.carpaye.bankaccountkata.domain.model;
+package com.thomas.carpaye.bankaccountkata.domain.model.common;
 
 import java.util.Objects;
 
 public class Account {
 
-    public static final String ACCOUNT_ID_REGEX = "[0-9]+";
+    private static final String ACCOUNT_ID_REGEX = "[0-9]+";
 
     private final String accountId;
 
