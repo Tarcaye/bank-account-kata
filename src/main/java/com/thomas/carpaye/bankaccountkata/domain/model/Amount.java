@@ -1,10 +1,9 @@
 package com.thomas.carpaye.bankaccountkata.domain.model;
 
 public class Amount {
+    final int value;
 
-    private final int money;
-
-    public Amount(int money) {
-        this.money = money;
+    public Amount(int value) {
+        this.value = value;
     }
 }

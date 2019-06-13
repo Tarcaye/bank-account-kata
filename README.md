@@ -8,7 +8,7 @@ Think of your personal bank account experience When in doubt, go for the simples
  
 # User Stories
 ##### US 1:
-**In order to** save money  
+**In order to** save value  
 **As a** bank client  
 **I want to** make a deposit in my account  
  

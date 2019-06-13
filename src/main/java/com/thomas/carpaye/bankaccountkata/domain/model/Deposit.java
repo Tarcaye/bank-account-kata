@@ -10,8 +10,15 @@ public class Deposit {
         this.amount = amount;
     }
 
-    public static Deposit of(String accountId, int money) {
-        return new Deposit(new Account(accountId), new Amount(money));
+    public static Deposit of(String accountId, int amount) {
+        checkAmount(amount);
+        return new Deposit(new Account(accountId), new Amount(amount));
+    }
+
+    private static void checkAmount(int amount) {
+        if (amount<=0){
+            throw new InvalidDepositAmountException("Invalid amount for deposit : " + amount);
+        }
     }
 
     public Amount getAmount() {

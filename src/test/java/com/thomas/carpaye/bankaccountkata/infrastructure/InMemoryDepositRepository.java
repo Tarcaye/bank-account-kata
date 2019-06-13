@@ -1,14 +1,8 @@
 package com.thomas.carpaye.bankaccountkata.infrastructure;
 
-import com.thomas.carpaye.bankaccountkata.domain.model.Account;
-import com.thomas.carpaye.bankaccountkata.domain.model.Amount;
-import com.thomas.carpaye.bankaccountkata.domain.model.Deposit;
-import com.thomas.carpaye.bankaccountkata.domain.model.DepositRepository;
+import com.thomas.carpaye.bankaccountkata.domain.model.*;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class InMemoryDepositRepository implements DepositRepository {
 
@@ -16,16 +10,21 @@ public class InMemoryDepositRepository implements DepositRepository {
 
     @Override
     public void add(Deposit deposit) {
-        List<Amount> amounts = depositByAccount.get(deposit.getAccount());
-        if (amounts == null){
-            amounts = new ArrayList<>();
-        }
+        List<Amount> amounts = getAmounts(deposit.getAccount());
         amounts.add(deposit.getAmount());
         depositByAccount.put(deposit.getAccount(), amounts);
     }
 
+    private List<Amount> getAmounts(Account account) {
+        List<Amount> amounts = depositByAccount.get(account);
+        if (amounts == null){
+            amounts = new ArrayList<>();
+        }
+        return amounts;
+    }
+
     @Override
-    public List<Deposit> getDeposits(Account account) {
-        return null;
+    public Amounts getDepositAmounts(Account account) {
+        return Amounts.of(depositByAccount.get(account));
     }
 }
