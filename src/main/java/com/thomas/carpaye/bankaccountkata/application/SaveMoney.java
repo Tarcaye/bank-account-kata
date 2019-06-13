@@ -1,16 +1,16 @@
 package com.thomas.carpaye.bankaccountkata.application;
 
 import com.thomas.carpaye.bankaccountkata.domain.model.Deposit;
-import com.thomas.carpaye.bankaccountkata.domain.model.DepositRepository;
+import com.thomas.carpaye.bankaccountkata.domain.model.PastTransactionsRepository;
 
 public class SaveMoney {
-    private final DepositRepository depositRepository;
+    private final PastTransactionsRepository pastTransactionsRepository;
 
-    public SaveMoney(DepositRepository depositRepository) {
-        this.depositRepository = depositRepository;
+    public SaveMoney(PastTransactionsRepository pastTransactionsRepository) {
+        this.pastTransactionsRepository = pastTransactionsRepository;
     }
 
     public void save(String accountId, int money) {
-        depositRepository.add(Deposit.of(accountId, money));
+        pastTransactionsRepository.add(Deposit.of(accountId, money));
     }
 }

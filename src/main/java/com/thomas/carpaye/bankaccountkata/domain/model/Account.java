@@ -34,4 +34,11 @@ public class Account {
     public int hashCode() {
         return Objects.hash(accountId);
     }
+
+    @Override
+    public String toString() {
+        return "Account{" +
+                "accountId='" + accountId + '\'' +
+                '}';
+    }
 }

@@ -11,4 +11,9 @@ public class Balance {
     public int getValue() {
         return value;
     }
+
+    public boolean insufficientFunds(Amount overdraft, Withdrawal withdrawal) {
+        int futureBalance = withdrawal.futureBalance(this);
+        return futureBalance < overdraft.value;
+    }
 }

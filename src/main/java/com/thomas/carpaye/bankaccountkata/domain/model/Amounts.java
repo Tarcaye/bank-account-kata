@@ -20,6 +20,10 @@ public class Amounts {
     }
 
     public int getSum() {
+        if (amountList.isEmpty()){
+            return 0;
+        }
+
         return amountList.stream().map(amount -> amount.value)
                 .collect(Collectors.summingInt(i -> i));
     }

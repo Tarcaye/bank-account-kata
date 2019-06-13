@@ -1,6 +1,7 @@
 package com.thomas.carpaye.bankaccountkata.application;
 
-import com.thomas.carpaye.bankaccountkata.domain.model.DepositRepository;
+import com.thomas.carpaye.bankaccountkata.domain.model.Deposit;
+import com.thomas.carpaye.bankaccountkata.domain.model.PastTransactionsRepository;
 import org.junit.Test;
 import org.mockito.Mockito;
 
@@ -8,8 +9,8 @@ import static org.mockito.ArgumentMatchers.any;
 
 public class SaveMoneyTest {
 
-    private DepositRepository depositRepository = Mockito.mock(DepositRepository.class);
-    private SaveMoney saveMoney = new SaveMoney(depositRepository);
+    private PastTransactionsRepository pastTransactionsRepository = Mockito.mock(PastTransactionsRepository.class);
+    private SaveMoney saveMoney = new SaveMoney(pastTransactionsRepository);
 
     @Test
     public void must_save_money_deposit(){
@@ -22,7 +23,7 @@ public class SaveMoneyTest {
 
 
         // Assert
-        Mockito.verify(depositRepository).add(any());
+        Mockito.verify(pastTransactionsRepository).add(any(Deposit.class));
     }
 
 }

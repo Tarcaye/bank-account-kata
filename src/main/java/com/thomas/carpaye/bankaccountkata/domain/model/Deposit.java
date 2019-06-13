@@ -1,13 +1,9 @@
 package com.thomas.carpaye.bankaccountkata.domain.model;
 
-public class Deposit {
-
-    private final Account account;
-    private final Amount amount;
+public class Deposit extends PastTransaction {
 
     private Deposit(Account account, Amount amount) {
-        this.account = account;
-        this.amount = amount;
+        super(account, amount);
     }
 
     public static Deposit of(String accountId, int amount) {
@@ -21,11 +17,4 @@ public class Deposit {
         }
     }
 
-    public Amount getAmount() {
-        return amount;
-    }
-
-    public Account getAccount() {
-        return account;
-    }
 }

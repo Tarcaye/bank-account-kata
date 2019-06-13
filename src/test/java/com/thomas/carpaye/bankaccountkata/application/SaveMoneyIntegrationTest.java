@@ -1,10 +1,10 @@
 package com.thomas.carpaye.bankaccountkata.application;
 
+import com.thomas.carpaye.bankaccountkata.domain.model.Account;
 import com.thomas.carpaye.bankaccountkata.domain.model.Balance;
-import com.thomas.carpaye.bankaccountkata.domain.model.DepositRepository;
+import com.thomas.carpaye.bankaccountkata.domain.model.PastTransactionsRepository;
 import com.thomas.carpaye.bankaccountkata.domain.model.InvalidDepositAmountException;
-import com.thomas.carpaye.bankaccountkata.infrastructure.InMemoryDepositRepository;
-import org.assertj.core.api.Assertions;
+import com.thomas.carpaye.bankaccountkata.infrastructure.InMemoryPastTransactionsRepository;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -12,10 +12,10 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class SaveMoneyIntegrationTest {
 
-    private DepositRepository depositRepository = new InMemoryDepositRepository();
+    private PastTransactionsRepository pastTransactionsRepository = new InMemoryPastTransactionsRepository();
 
-    private SaveMoney saveMoney = new SaveMoney(depositRepository);
-    private CheckBalance checkBalance = new CheckBalance(depositRepository);
+    private SaveMoney saveMoney = new SaveMoney(pastTransactionsRepository);
+    private CheckBalance checkBalance = new CheckBalance(pastTransactionsRepository);
 
 //    In order to save money
 //    As a bank client
@@ -31,7 +31,7 @@ public class SaveMoneyIntegrationTest {
         saveMoney.save(accountId, money);
 
         // Assert
-        Balance balance = checkBalance.getAccountBalance(accountId);
+        Balance balance = checkBalance.getAccountBalance(new Account(accountId));
         assertThat(balance.getValue()).isEqualTo(money);
     }
 
@@ -46,7 +46,7 @@ public class SaveMoneyIntegrationTest {
         saveMoney.save(accountId, money);
 
         // Assert
-        Balance balance = checkBalance.getAccountBalance(accountId);
+        Balance balance = checkBalance.getAccountBalance(new Account(accountId));
         assertThat(balance.getValue()).isEqualTo(money * 2);
     }
 

@@ -6,4 +6,11 @@ public class Amount {
     public Amount(int value) {
         this.value = value;
     }
+
+    @Override
+    public String toString() {
+        return "Amount{" +
+                "value=" + value +
+                '}';
+    }
 }
