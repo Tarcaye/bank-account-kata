@@ -17,7 +17,7 @@ public class Account {
     }
 
     private static void checkAccountId(String accountId) {
-        if (accountId==null || accountId.matches(ACCOUNT_ID_REGEX)){
+        if (accountId==null || !accountId.matches(ACCOUNT_ID_REGEX)){
             throw new InvalidAccountException("Invalid accountId : " + accountId);
         }
     }

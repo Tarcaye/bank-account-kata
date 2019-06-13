@@ -1,5 +1,6 @@
 package com.thomas.carpaye.bankaccountkata.application;
 
+import com.thomas.carpaye.bankaccountkata.domain.model.Account;
 import com.thomas.carpaye.bankaccountkata.domain.model.Deposit;
 import com.thomas.carpaye.bankaccountkata.domain.model.PastTransactionsRepository;
 import org.junit.Test;
@@ -23,7 +24,7 @@ public class SaveMoneyTest {
 
 
         // Assert
-        Mockito.verify(pastTransactionsRepository).add(any(Deposit.class));
+        Mockito.verify(pastTransactionsRepository).add(any(Account.class), any(Deposit.class));
     }
 
 }

@@ -44,7 +44,7 @@ public class WithdrawMoneyTest {
 
 
         // Assert
-        Mockito.verify(pastTransactionsRepository).add(any(Withdrawal.class));
+        Mockito.verify(pastTransactionsRepository).add(any(Account.class), any(Withdrawal.class));
     }
 
     @Test
@@ -58,7 +58,7 @@ public class WithdrawMoneyTest {
         // Act
         Assertions.assertThatThrownBy(() -> withdrawMoney.withdraw(accountId, money))
         .isExactlyInstanceOf(InsufficientFundsException.class)
-        .hasMessage("Insufficient funds for withdraw : Withdrawal{account=Account{accountId='1234567890123'}, amount=Amount{value=100000}}");
+        .hasMessage("Insufficient funds for withdraw : Withdrawal{, amount=Amount{value=100000}} on account : Account{accountId='1234567890123'}");
     }
 
     private void givenOverdraft(int overDraft) {

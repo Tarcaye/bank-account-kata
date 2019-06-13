@@ -3,7 +3,6 @@ package com.thomas.carpaye.bankaccountkata.domain.model;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.Assert.*;
 
 public class WithdrawalTest {
 
@@ -14,7 +13,7 @@ public class WithdrawalTest {
         int money = -12000;
 
         // Act
-        assertThatThrownBy(()->Deposit.of(accountId, money))
+        assertThatThrownBy(()->Deposit.of(money))
                 // Assert
                 .isExactlyInstanceOf(InvalidDepositAmountException.class)
                 .hasMessage("Invalid amount for deposit : " + money);

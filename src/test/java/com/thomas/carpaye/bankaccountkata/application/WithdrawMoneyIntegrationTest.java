@@ -14,7 +14,7 @@ public class WithdrawMoneyIntegrationTest {
 
     private SaveMoney saveMoney = new SaveMoney(pastTransactionsRepository);
     private CheckBalance checkBalance = new CheckBalance(pastTransactionsRepository);
-    
+
     private OverdraftRepository overdraftRepository = new SimpleOverdraftRepository();
     private WithdrawMoney withdrawMoney = new WithdrawMoney(checkBalance, pastTransactionsRepository, overdraftRepository);
 

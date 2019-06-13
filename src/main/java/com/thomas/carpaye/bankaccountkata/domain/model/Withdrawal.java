@@ -2,13 +2,13 @@ package com.thomas.carpaye.bankaccountkata.domain.model;
 
 public class Withdrawal extends PastTransaction {
 
-    private Withdrawal(Account account, Amount amount) {
-        super(account, amount);
+    private Withdrawal(Amount amount) {
+        super(amount);
     }
 
-    public static Withdrawal of(String accountId, int amount) {
+    public static Withdrawal of(int amount) {
         checkAmount(amount);
-        return new Withdrawal(new Account(accountId), new Amount(amount));
+        return new Withdrawal(new Amount(amount));
     }
 
     private static void checkAmount(int amount) {
@@ -20,7 +20,6 @@ public class Withdrawal extends PastTransaction {
     @Override
     public String toString() {
         return "Withdrawal{" +
-                "account=" + account +
                 ", amount=" + amount +
                 '}';
     }

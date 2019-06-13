@@ -18,13 +18,13 @@ public class WithdrawMoney {
         final Account account = new Account(accountId);
         Amount overdraft = overdraftRepository.getOverdraft(account);
         Balance accountBalance = checkBalance.getAccountBalance(account);
-        Withdrawal withdrawal = Withdrawal.of(accountId, money);
+        Withdrawal withdrawal = Withdrawal.of(money);
 
         if (accountBalance.insufficientFunds(overdraft, withdrawal)) {
-            throw new InsufficientFundsException("Insufficient funds for withdraw : " + withdrawal);
+            throw new InsufficientFundsException("Insufficient funds for withdraw : " + withdrawal + " on account : " + account);
         }
 
-        pastTransactionsRepository.add(withdrawal);
+        pastTransactionsRepository.add(account, withdrawal);
     }
 
 }

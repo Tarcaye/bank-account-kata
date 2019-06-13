@@ -10,17 +10,16 @@ public class InMemoryPastTransactionsRepository implements PastTransactionsRepos
     private Map<Account, List<Amount>> withdrawalByAccount = new HashMap<>();
 
     @Override
-    public void add(Deposit deposit) {
-        add(depositByAccount, deposit);
+    public void add(Account account, Deposit deposit) {
+        add(account, depositByAccount, deposit);
     }
 
     @Override
-    public void add(Withdrawal withdrawal) {
-        add(withdrawalByAccount, withdrawal);
+    public void add(Account account, Withdrawal withdrawal) {
+        add(account, withdrawalByAccount, withdrawal);
     }
 
-    private void add(Map<Account, List<Amount>> operationsByAccount, PastTransaction pastTransaction) {
-        Account account = pastTransaction.getAccount();
+    private void add(Account account, Map<Account, List<Amount>> operationsByAccount, PastTransaction pastTransaction) {
         List<Amount> amounts = getAmounts(account, operationsByAccount);
         amounts.add(pastTransaction.getAmount());
         operationsByAccount.put(account, amounts);
