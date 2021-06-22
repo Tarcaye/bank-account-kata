@@ -1,6 +1,7 @@
 package bank;
 
 import java.text.MessageFormat;
+import java.util.Collections;
 import java.util.List;
 
 import static bank.Amount.createAmount;
@@ -31,6 +32,6 @@ class Account {
     }
 
     public List<Object> history() {
-        return null;
+        return Collections.emptyList();
     }
 }
