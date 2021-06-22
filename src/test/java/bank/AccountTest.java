@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class SaveMoneyTest {
+public class AccountTest {
 
     @Test
     void the_balance_of_a_new_bank_acount_is_zero() {
