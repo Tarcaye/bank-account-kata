@@ -78,7 +78,7 @@ public class AccountTest {
     }
 
     @Test
-    void history() {
+    void a_client_should_see_a_deposit_in_his_history() {
         Account account = new Account(new Client(123456));
 
         account.deposit(createAmount(1000));

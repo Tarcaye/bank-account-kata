@@ -1,7 +1,7 @@
 package bank;
 
 import java.text.MessageFormat;
-import java.util.Collections;
+import java.util.ArrayList;
 
 import static bank.Amount.createAmount;
 
@@ -9,14 +9,17 @@ class Account {
 
     private final Client client;
     private Amount balance;
+    private final History history;
 
     public Account(Client client) {
         this.client = client;
         balance = createAmount(0);
+        history = new History(new ArrayList<>());
     }
 
     public void deposit(Amount amount) {
         balance = balance.add(amount);
+        history.addDeposit(amount, balance);
     }
 
     public Amount getBalance() {
@@ -31,6 +34,6 @@ class Account {
     }
 
     public History history() {
-        return new History(Collections.emptyList());
+        return history;
     }
 }

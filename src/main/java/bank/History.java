@@ -13,4 +13,8 @@ public class History {
         return value;
     }
 
+    public void addDeposit(Amount amount, Amount balance) {
+        value.add(new Deposit(amount, balance).asString());
+    }
+
 }
