@@ -4,7 +4,7 @@ class Account {
     public Account(Client client) {
     }
 
-    public int deposit(int i) {
-        return 100;
+    public Amount deposit(int i) {
+        return new Amount(100);
     }
 }
