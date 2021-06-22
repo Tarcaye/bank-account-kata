@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static bank.Amount.createAmount;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class AccountTest {
 
@@ -55,6 +56,19 @@ public class AccountTest {
 
         assertThat(account.getBalance()).isEqualTo(createAmount(1000 - 100));
     }
+
+
+
+    @Test
+    void a_customer_cannot_withdraw_more_than_his_savings() {
+        Account account = new Account(new Client());
+
+        account.deposit(createAmount(1000));
+        assertThatThrownBy(() -> account.withdraw(createAmount(10000)))
+            .isInstanceOf(IllegalArgumentException.class);
+    }
+
+
 
 
 
