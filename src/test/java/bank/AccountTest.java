@@ -58,18 +58,22 @@ public class AccountTest {
     }
 
 
-
     @Test
     void a_customer_cannot_withdraw_more_than_his_savings() {
         Account account = new Account(new Client(123456));
 
         account.deposit(createAmount(1000));
         assertThatThrownBy(() -> account.withdraw(createAmount(10000)))
-            .isInstanceOf(UnsupportedWithdrawalException.class)
+                .isInstanceOf(UnsupportedWithdrawalException.class)
                 .hasMessage("Unable to withdraw this amount : Client: 123456, balance: 1000, withdrawal: 10000");
     }
 
+    @Test
+    void a_new_account_has_no_history() {
+        Account account = new Account(new Client(123456));
 
+        assertThat(account.history()).isEmpty();
+    }
 
 
 }

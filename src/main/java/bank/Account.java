@@ -1,6 +1,7 @@
 package bank;
 
 import java.text.MessageFormat;
+import java.util.List;
 
 import static bank.Amount.createAmount;
 
@@ -27,5 +28,9 @@ class Account {
             throw new UnsupportedWithdrawalException(MessageFormat.format("Unable to withdraw this amount : {0}, balance: {1}, withdrawal: {2}", client, balance, amount));
 
         balance = balance.substract(amount);
+    }
+
+    public List<Object> history() {
+        return null;
     }
 }
