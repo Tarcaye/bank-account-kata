@@ -5,7 +5,7 @@ class Account {
     private Amount balance;
 
     public Account(Client client) {
-        balance = new Amount(0);
+        balance = Amount.createAmount(0);
     }
 
     public void deposit(Amount amount) {

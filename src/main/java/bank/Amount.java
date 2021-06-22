@@ -5,9 +5,13 @@ import java.util.Objects;
 public class Amount {
     private final long value;
 
-    public Amount(long value) {
-        if (value < 0) throw new IllegalArgumentException("An amount cannot be negative : -100 is not a valid amount");
+    private Amount(long value) {
         this.value = value;
+    }
+
+    public static Amount createAmount(long value) {
+        if (value < 0) throw new IllegalArgumentException(String.format("An amount cannot be negative : %d is not a valid amount", value));
+        return new Amount(value);
     }
 
     @Override
@@ -24,6 +28,6 @@ public class Amount {
     }
 
     Amount add(Amount amount) {
-        return new Amount(value + amount.value);
+        return createAmount(value + amount.value);
     }
 }
