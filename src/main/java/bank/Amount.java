@@ -34,4 +34,13 @@ public class Amount {
     public Amount substract(Amount amount) {
         return createAmount(value - amount.value);
     }
+
+    public boolean isLessThan(Amount amount) {
+        return this.value < amount.value;
+    }
+
+    @Override
+    public String toString() {
+        return "" + value;
+    }
 }
