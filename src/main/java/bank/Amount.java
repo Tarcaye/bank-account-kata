@@ -3,9 +3,9 @@ package bank;
 import java.util.Objects;
 
 public class Amount {
-    private final int value;
+    private final long value;
 
-    public Amount(int value) {
+    public Amount(long value) {
         this.value = value;
     }
 

@@ -9,7 +9,7 @@ class Account {
     }
 
     public void deposit(Amount amount) {
-        balance = amount;
+        balance = new Amount(amount.asLong() + balance.asLong());
     }
 
     public Amount getBalance() {
