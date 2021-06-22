@@ -72,7 +72,19 @@ public class AccountTest {
     void a_new_account_has_no_history() {
         Account account = new Account(new Client(123456));
 
-        assertThat(account.history()).isEmpty();
+        History history = account.history();
+
+        assertThat(history.asList()).isEmpty();
+    }
+
+    @Test
+    void history() {
+        Account account = new Account(new Client(123456));
+
+        account.deposit(createAmount(1000));
+        History history = account.history();
+
+        assertThat(history.asList()).contains("Operation : {type: Deposit, date: 2012-07-10 14:58:00.000000, amount: 1000, balance: 1000}");
     }
 
 

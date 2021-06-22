@@ -2,7 +2,6 @@ package bank;
 
 import java.text.MessageFormat;
 import java.util.Collections;
-import java.util.List;
 
 import static bank.Amount.createAmount;
 
@@ -31,7 +30,7 @@ class Account {
         balance = balance.substract(amount);
     }
 
-    public List<Object> history() {
-        return Collections.emptyList();
+    public History history() {
+        return new History(Collections.emptyList());
     }
 }
