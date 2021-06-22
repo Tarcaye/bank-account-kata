@@ -6,6 +6,7 @@ public class Amount {
     private final long value;
 
     public Amount(long value) {
+        if (value < 0) throw new IllegalArgumentException("An amount cannot be negative : -100 is not a valid amount");
         this.value = value;
     }
 
