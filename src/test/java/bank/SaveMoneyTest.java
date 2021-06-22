@@ -1,7 +1,8 @@
 package bank;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class SaveMoneyTest {
 
@@ -9,9 +10,9 @@ public class SaveMoneyTest {
     void save_money() {
         Account account = new Account(new Client());
 
-        Amount deposit = account.deposit(100);
+        Amount deposit = account.deposit(new Amount(100));
 
-        Assertions.assertThat(deposit.asLong()).isEqualTo(100);
+        assertThat(deposit.asLong()).isEqualTo(100);
     }
 
 
