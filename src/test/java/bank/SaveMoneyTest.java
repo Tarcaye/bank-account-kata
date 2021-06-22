@@ -10,7 +10,8 @@ public class SaveMoneyTest {
     void save_money() {
         Account account = new Account(new Client());
 
-        Amount deposit = account.deposit(new Amount(100));
+        account.deposit(new Amount(100));
+        Amount deposit = account.getBalance();
 
         assertThat(deposit.asLong()).isEqualTo(100);
     }
