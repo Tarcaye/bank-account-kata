@@ -46,5 +46,16 @@ public class AccountTest {
     }
 
 
+    @Test
+    void a_customer_should_withdraw_some_of_his_savings() {
+        Account account = new Account(new Client());
+
+        account.deposit(createAmount(1000));
+        account.withdraw(createAmount(100));
+
+        assertThat(account.getBalance()).isEqualTo(createAmount(1000 - 100));
+    }
+
+
 
 }
