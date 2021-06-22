@@ -30,4 +30,8 @@ public class Amount {
     Amount add(Amount amount) {
         return createAmount(value + amount.value);
     }
+
+    public Amount substract(Amount amount) {
+        return createAmount(value - amount.value);
+    }
 }

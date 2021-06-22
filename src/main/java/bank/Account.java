@@ -19,6 +19,6 @@ class Account {
     }
 
     public void withdraw(Amount amount) {
-        balance = createAmount(0);
+        balance = balance.substract(amount);
     }
 }
