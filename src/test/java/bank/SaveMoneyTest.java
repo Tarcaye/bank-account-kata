@@ -11,9 +11,8 @@ public class SaveMoneyTest {
         Account account = new Account(new Client());
 
         account.deposit(new Amount(100));
-        Amount deposit = account.getBalance();
 
-        assertThat(deposit.asLong()).isEqualTo(100);
+        assertThat(account.getBalance()).isEqualTo(new Amount(100));
     }
 
 
