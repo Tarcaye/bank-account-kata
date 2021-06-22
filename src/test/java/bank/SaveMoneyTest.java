@@ -15,7 +15,6 @@ public class SaveMoneyTest {
         assertThat(balance).isEqualTo(new Amount(0));
     }
 
-
     @Test
     void the_balance_of_a_bank_acount_after_a_single_deposit_is_the_amount_of_the_deposit() {
         Account account = new Account(new Client());
@@ -23,6 +22,18 @@ public class SaveMoneyTest {
         account.deposit(new Amount(100));
 
         assertThat(account.getBalance()).isEqualTo(new Amount(100));
+    }
+
+
+
+    @Test
+    void the_balance_of_a_bank_acount_after_two_deposits_is_the_sum_of_the_deposits() {
+        Account account = new Account(new Client());
+
+        account.deposit(new Amount(100));
+        account.deposit(new Amount(100));
+
+        assertThat(account.getBalance()).isEqualTo(new Amount(100 + 100));
     }
 
 
