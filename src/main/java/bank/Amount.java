@@ -9,10 +9,6 @@ public class Amount {
         this.value = value;
     }
 
-    public long asLong() {
-        return value;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -24,5 +20,9 @@ public class Amount {
     @Override
     public int hashCode() {
         return Objects.hash(value);
+    }
+
+    Amount add(Amount amount) {
+        return new Amount(value + amount.value);
     }
 }
