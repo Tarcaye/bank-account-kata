@@ -1,11 +1,13 @@
 package bank;
 
+import static bank.Amount.createAmount;
+
 class Account {
 
     private Amount balance;
 
     public Account(Client client) {
-        balance = Amount.createAmount(0);
+        balance = createAmount(0);
     }
 
     public void deposit(Amount amount) {
@@ -17,6 +19,6 @@ class Account {
     }
 
     public void withdraw(Amount amount) {
-
+        balance = createAmount(0);
     }
 }
