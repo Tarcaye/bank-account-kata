@@ -58,7 +58,7 @@ public class AccountTest {
         Account account = new Account(new Client(123456));
 
         account.deposit(createAmount(1000), createDate("2012-07-10 14:58:00"));
-        account.withdraw(createAmount(1000));
+        account.withdraw(createAmount(1000), createDate("2012-07-11 15:58:00"));
 
         assertThat(account.getBalance()).isEqualTo(createAmount(1000 - 1000));
     }
@@ -69,7 +69,7 @@ public class AccountTest {
         Account account = new Account(new Client(123456));
 
         account.deposit(createAmount(1000), createDate("2012-07-10 14:58:00"));
-        account.withdraw(createAmount(100));
+        account.withdraw(createAmount(100), createDate("2012-07-11 15:58:00"));
 
         assertThat(account.getBalance()).isEqualTo(createAmount(1000 - 100));
     }
@@ -80,7 +80,7 @@ public class AccountTest {
         Account account = new Account(new Client(123456));
 
         account.deposit(createAmount(1000), createDate("2012-07-10 14:58:00"));
-        assertThatThrownBy(() -> account.withdraw(createAmount(10000)))
+        assertThatThrownBy(() -> account.withdraw(createAmount(10000), createDate("2012-07-11 15:58:00")))
                 .isInstanceOf(UnsupportedWithdrawalException.class)
                 .hasMessage("Unable to withdraw this amount : Client: 123456, balance: 1000, withdrawal: 10000");
     }
@@ -91,7 +91,7 @@ public class AccountTest {
 
         History history = account.history();
 
-        assertThat(history.asList()).isEmpty();
+        assertThat(history.asStrings()).isEmpty();
     }
 
     @Test
@@ -101,7 +101,19 @@ public class AccountTest {
         account.deposit(createAmount(1000), createDate("2012-07-10 14:58:00"));
         History history = account.history();
 
-        assertThat(history.asList()).contains("Operation : {type: Deposit, date: 2012-07-10 14:58:00, amount: 1000, balance: 1000}");
+        assertThat(history.asStrings()).contains("Operation : {type: Deposit, date: 2012-07-10 14:58:00, amount: 1000, balance: 1000}");
+    }
+
+
+    @Test
+    void a_client_should_see_a_withdraw_in_his_history() {
+        Account account = new Account(new Client(123456));
+
+        account.deposit(createAmount(1000), createDate("2012-07-10 14:58:00"));
+        account.withdraw(createAmount(700), createDate("2012-07-11 15:58:00"));
+        History history = account.history();
+
+        assertThat(history.asStrings()).contains("Operation : {type: Deposit, date: 2012-07-10 14:58:00, amount: 1000, balance: 1000}","Operation : {type: Withdraw, date: 2012-07-11 15:58:00, amount: 700, balance: 300}");
     }
 
 

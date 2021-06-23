@@ -20,7 +20,6 @@ class Account {
 
     public void deposit(Amount amount, Date date) {
         balance = balance.add(amount);
-
         history.addDeposit(amount, balance, date);
     }
 
@@ -28,11 +27,12 @@ class Account {
         return balance;
     }
 
-    public void withdraw(Amount amount) {
+    public void withdraw(Amount amount, Date date) {
         if (balance.isLessThan(amount))
             throw new UnsupportedWithdrawalException(MessageFormat.format("Unable to withdraw this amount : {0}, balance: {1}, withdrawal: {2}", client, balance, amount));
 
         balance = balance.substract(amount);
+        history.addWithdraw(amount, balance, date);
     }
 
     public History history() {
