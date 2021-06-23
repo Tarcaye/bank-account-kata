@@ -3,7 +3,7 @@ package bank;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Deposit {
+public class Deposit implements Operation {
     private final Amount amount;
     private final Amount balance;
     private final Date date;
@@ -14,7 +14,8 @@ public class Deposit {
         this.date = date;
     }
 
-    String asString() {
+    @Override
+    public String asString() {
         String when = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
         return "Operation : {type: Deposit, date: " + when + ", amount: " + amount + ", balance: " + balance + "}";
     }

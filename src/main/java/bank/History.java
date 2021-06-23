@@ -5,14 +5,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class History {
-    private final List<Deposit> value;
+    private final List<Operation> value;
 
-    public History(List<Deposit> value) {
+    public History(List<Operation> value) {
         this.value = value;
     }
 
     public List<String> asStrings() {
-        return value.stream().map(Deposit::asString).collect(Collectors.toList());
+        return value.stream().map(Operation::asString).collect(Collectors.toList());
     }
 
     public void addDeposit(Amount amount, Amount balance, Date date) {
