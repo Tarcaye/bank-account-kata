@@ -2,6 +2,7 @@ package bank;
 
 import java.text.MessageFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import static bank.Amount.createAmount;
 
@@ -17,9 +18,10 @@ class Account {
         history = new History(new ArrayList<>());
     }
 
-    public void deposit(Amount amount) {
+    public void deposit(Amount amount, Date date) {
         balance = balance.add(amount);
-        history.addDeposit(amount, balance);
+
+        history.addDeposit(amount, balance, date);
     }
 
     public Amount getBalance() {

@@ -1,5 +1,6 @@
 package bank;
 
+import java.util.Date;
 import java.util.List;
 
 public class History {
@@ -13,8 +14,8 @@ public class History {
         return value;
     }
 
-    public void addDeposit(Amount amount, Amount balance) {
-        value.add(new Deposit(amount, balance).asString());
+    public void addDeposit(Amount amount, Amount balance, Date date) {
+        value.add(new Deposit(amount, balance, date).asString());
     }
 
 }
