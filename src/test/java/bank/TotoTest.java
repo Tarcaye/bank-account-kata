@@ -1,7 +1,8 @@
 package bank;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class TotoTest {
 
@@ -9,14 +10,12 @@ public class TotoTest {
 
     @Test
     void should_return_1_when_deposit_of_one() {
-        Assertions.assertThat(account.deposit(1)).isEqualTo(1);
-
+        assertThat(account.deposit(new Amount(1))).isEqualTo(new Amount(1));
     }
 
     @Test
     void should_return_2_when_deposit_of_two() {
-        Assertions.assertThat(account.deposit(2)).isEqualTo(2);
-
+        assertThat(account.deposit(new Amount(2))).isEqualTo(new Amount(2));
     }
 
     public static class Account {
@@ -24,8 +23,8 @@ public class TotoTest {
 
         }
 
-        private int deposit(int i) {
-            return i;
+        private Amount deposit(Amount amount) {
+            return amount;
         }
     }
 }
