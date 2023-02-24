@@ -18,13 +18,26 @@ public class TotoTest {
         assertThat(account.deposit(new Amount(2))).isEqualTo(new Amount(2));
     }
 
+    @Test
+    void a_new_account_have_a_balance_of_0() {
+        assertThat(account.balance()).isEqualTo(new Amount(0));
+    }
+
     public static class Account {
+
+        private Amount amount ;
+
         public Account() {
 
         }
 
         private Amount deposit(Amount amount) {
-            return amount;
+            this.amount = amount;
+            return this.amount;
+        }
+
+        public Amount balance() {
+            return new Amount(0);
         }
     }
 }
